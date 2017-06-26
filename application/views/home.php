@@ -1,10 +1,5 @@
-<?php //echo VIEWPATH;exit;echo $this->load->view('includes/header.php',TRUE);
-	include_once VIEWPATH."includes/header.php";
-?>
 <body id="page-top">
-
-    
-    <header>
+   <header>
         <div class="container">
             <div class="row">
                 <div class="col-sm-7">
@@ -49,36 +44,49 @@
             </div>
         </div>
     </section>
-
+    <?php if(isset($isValidated) && $isValidated===FALSE){ ?>
+    <script type="text/javascript">$(function() { 
+            document.location.href = '#register';
+        });</script>
+    <?php } ?>
     <section id="register" class="features">
         <div class="container">
           <h2>Registration Form</h2>
-          <form class="form-vertical" action="" method="post">
+          <!--<form class="form-vertical" action="" method="post">-->
+          <?php
+              //form data
+              $attributes = array('class' => 'form-vertical', 'id' => 'registration', 'name' => 'registration');
+
+              //form validation
+              echo validation_errors();
+              
+              echo form_open('register', $attributes);
+          ?>
 
             <div class="form-group">
               <div class="col-sm-3">
               <label for="email">First Name:</label>
               
-                <input type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname">
+                <input type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname" value="<?php echo set_value('fname'); ?>">
               </div>
             </div>
             <div class="form-group">
               <div class="col-sm-3">     
               <label class="control-label" for="pwd">Last Name:</label>                   
-                <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname">
+                <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname" value="<?php echo set_value('lname'); ?>">
               </div>
             </div>
 
              <div class="form-group">
               <div class="col-sm-3">     
               <label class="control-label" for="pwd">Father's Name:</label>                   
-                <input type="text" class="form-control" id="father" placeholder="Enter Father's Name" name="father">
+                <input type="text" class="form-control" id="father" placeholder="Enter Father's Name" name="father" value="<?php echo set_value('father'); ?>">
               </div>
             </div>
              <div class="form-group">
               <div class="col-sm-3">     
               <label class="control-label" for="pwd">Mother's Name:</label>                   
-                <input type="text" class="form-control" id="Mother" placeholder="Enter Mother's name" name="Mother">
+                <input type="text" class="form-control" id="Mother" placeholder="Enter Mother's name" name="mother" value="<?php echo set_value('mother'); ?>">
               </div>
             </div>
 
@@ -86,30 +94,28 @@
               <div class="col-sm-3">
               <label class="control-label " for="email">Email:</label>
               
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?php echo set_value('email'); ?>">
               </div>
             </div>
             <div class="form-group">
               <div class="col-sm-3">     
               <label class="control-label" for="pwd">Mobile:</label>                   
-                <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile no" name="mobile">
+                <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile no" name="mobile" value="<?php echo set_value('mobile'); ?>">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-sm-3">     
               <label class="control-label" for="pwd">Aadhar No:</label>                   
-                <input type="text" class="form-control" id="aadhar" placeholder="Enter Aadhar no" name="aadhar">
+                <input type="text" class="form-control" id="aadhar" placeholder="Enter Aadhar no" name="aadhar" value="<?php echo set_value('aadhar'); ?>">
               </div>
             </div>
             <div class="form-group">
               <div class="col-sm-3">     
               <label class="control-label" for="pwd">Agent Refrence:</label>                   
-                <input type="text" class="form-control" id="agent" placeholder="Enter agent refrence" name="agent">
+                <input type="text" class="form-control" id="agent" placeholder="Enter agent refrence" name="agent" value="<?php echo set_value('agent'); ?>">
               </div>
             </div>
-
-
 
 
             <div class="form-group">        
@@ -118,7 +124,8 @@
               </div>
             </div>
 
-          </form>
+          <!--</form>-->
+          <?php echo form_close(); ?>
         </div>
     </section>
 
@@ -215,4 +222,5 @@
             </ul>
         </div>
     </section>
-<?php include_once VIEWPATH."includes/footer.php"; ?>  
+<script src="<?php echo base_url('assets/lib/jquery/jquery.validate.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>

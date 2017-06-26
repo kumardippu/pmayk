@@ -9,10 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>New Age - Start Bootstrap Theme</title>
+    <title>pmayk.org</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('assets/lib/bootstrap/css/bootstrap.min.css');?>" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -42,7 +44,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Home</a>
+                <a class="navbar-brand page-scroll" href="#page-top">pmayk.org</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,3 +65,15 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+    <!-- jQuery -->
+    <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js'); ?>"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js') ?>"></script>
+
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="<?php echo base_url('assets/js/new-age.min.js'); ?>"></script>
