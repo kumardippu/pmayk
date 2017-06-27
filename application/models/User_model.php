@@ -88,6 +88,34 @@ class User_model extends CI_Model {
           }else{return false;}
         }
 
-       
+        /**
+          * Validate the login's data with the database
+          * @param string $user_name
+          * @param string $password
+          * @return void
+        */
+        function validate($user_name, $password){
+          $this->db->where('email', $user_name);
+          $this->db->where('password', $password);
+          $query = $this->db->get('tbl_admin');
+          //print_r($this->db->affected_rows());
+          if($query->num_rows() == 1){            
+            $rec = $query->row();
+            $data = array(
+              'user_id' => $rec->id,
+              'login_time' => date("Y-m-d H:i:s")
+             );
+            $this->db->insert('tbl_last_activity',$data);
+            return $rec->id;
+          }
+          //return false;   
+        }
+
+
+        function get_user_by_id( $id ) {     
+          $this->db->where('id', $id);
+          $query = $this->db->get('tbl_admin');
+          return $query->row();
+        }       
 
 }

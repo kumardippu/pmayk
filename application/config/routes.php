@@ -54,3 +54,15 @@ $route['register'] 		= 'home/registration';
 $route['home'] 			= 'home/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+/*admin*/
+$route['admin'] 		= 'login/index';
+$route['tech'] 			= 'login/index';
+$route['admin/signup'] 	= 'login/signup';
+$route['admin/create_member'] = 'login/create_member';
+$route['admin/login'] 	= 'login/index';
+$route['admin/logout'] 	= 'login/logout';
+$route['admin/login/validate_credentials'] = 'login/validate_credentials';
+
+/*Users*/
+$route['admin/user'] = 'user/index';
