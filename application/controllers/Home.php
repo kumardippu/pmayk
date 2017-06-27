@@ -17,11 +17,14 @@ class Home extends CI_Controller {
 		$data['header'] = 'includes/header';
 		$data['footer'] = 'includes/footer';
 		$data['main_content'] = 'home';
+        /*$data['refrence_no'] = '4555';
+        $data['main_content'] = 'thanks';*/
         $this->load->view('includes/template', $data);
 	}
 	public function registration(){
         $this->load->library('form_validation'); 
         // $this->load->helper('security'); // Used for xss_clean
+        $refrenc_no = "";
 		if ($this->input->server('REQUEST_METHOD') === 'POST'){
             $value = $this->input->post('email',TRUE); //where TRUE enables the xss filtering
             $this->form_validation->set_rules('fname', 'First Name', 'required|xss_clean');
@@ -43,7 +46,8 @@ class Home extends CI_Controller {
             $this->form_validation->set_error_delimiters('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
 			$data['isValidated'] = FALSE; 
             //print_r($this->input->post());exit;
-            if ( $this->form_validation->run() ){                    
+            if ( $this->form_validation->run() ){  
+                    $refrenc_no    = "PMAY".time();                  
 					$data_to_store = array(
 						'f_name' 	=> $this->input->post('fname'),
 						'l_name' 	=> $this->input->post('lname'),
@@ -54,6 +58,7 @@ class Home extends CI_Controller {
 						'aadhar_no'	=> $this->input->post('aadhar'),
 						'agent_ref'	=> $this->input->post('agent'),
 						'created_on'=> date('Y-m-d H:i:s'),
+                        'refrence_no'=>$refrenc_no
 					);
 			
                 //if the insert has returned true then we show the flash message
@@ -74,8 +79,13 @@ class Home extends CI_Controller {
                     //SendEmail($to, $cc, $bcc, $from, $subject, $html, $text, $attachments = null);
                     $this->emailcontrol->SendEmail($to,'tech.help@micromaxinfo.com','dippu@jayintech.com', $this->config->item('Email_DefaultSender'),'User details of Micromax KBM',null,$message,null);
                     */
-                    echo "success";exit;
-                             
+                    
+                   $data['refrence_no'] = $refrenc_no;
+                    /*$data['header'] = 'includes/header';
+                    $data['footer'] = 'includes/footer';
+                    $data['main_content'] = 'thanks';
+                    
+                    $this->load->view('includes/template', $data);*/
                 }else{
                      
                     $data['flash_message'] = FALSE; 
@@ -86,7 +96,12 @@ class Home extends CI_Controller {
         }
         $data['header'] = 'includes/header';
 		$data['footer'] = 'includes/footer';
-		$data['main_content'] = 'home';
+		if($refrenc_no!=''){
+            $data['main_content'] = 'thanks';    
+        }else{
+            $data['main_content'] = 'home';    
+        }
+        
         $this->load->view('includes/template', $data);
 	}
 
