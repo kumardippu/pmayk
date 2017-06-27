@@ -13,6 +13,14 @@ class User extends CI_Controller {
     * @return void
     */	
 	function index(){
+        $config["total_rows"] = $this->user_model->get_users(null,null,TRUE);        
+            $config["per_page"] = 7;
+            $config["uri_segment"] = 3; 
+            $this->pagination->initialize($config); 
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            
+        $data["users"] = $this->user_model->get_users($config["per_page"], $page,FALSE);
+        $data["links"] = $this->pagination->create_links();
 
 		$data['main_content'] = 'admin/user/list';
         $this->load->view('admin/includes/template', $data);  

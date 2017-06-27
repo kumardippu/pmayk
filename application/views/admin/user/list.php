@@ -14,21 +14,21 @@
       <div class="page-header users-header">
         <h2>
          <?php echo ucfirst($this->uri->segment(2));?> 		  
-			<a  href="<?php echo site_url("admin").'/'.$this->uri->segment(2); ?>/add" class="btn btn-success">Add a new</a>
+			<!--<a  href="<?php echo site_url("admin").'/'.$this->uri->segment(2); ?>/add" class="btn btn-success">Add a new</a>
 		<?php  $attributes = array('class' => 'form-horizontal', 'id' => ''); ?>
 		<div style = "margin-left:68%" >
 			<?php echo  form_open_multipart('administrator/bulk_user', $attributes); ?>	
 				<input type="file" name="excel_data" required>
 				<input type = "submit" name="bulk" value="Bulk Upload" />
 		   <?php echo form_close(); ?> 
-		 </div>  
+		 </div> --> 
         </h2>
       </div>
       
       <div class="row">
         <div class="span12 columns">
           <div class="well">
-          <a href="<?php echo base_url('administrator/allUSersReport'); ?>" style="float:right;"><input type="button" class="btn btn-danger" name="search" value="Export Users"/></a>
+          <!--<a href="<?php echo base_url('administrator/allUSersReport'); ?>" style="float:right;"><input type="button" class="btn btn-danger" name="search" value="Export Users"/></a>
 			<form method="post" action="<?php echo base_url('administrator/exportInfraReport');?>">
 				From: <input type="text"  class="txtbox startdate" name="from" id="StartDate" value="<?php echo date('Y-m-d');?>" />
                 &nbsp;To: <input type="text" name="to" class="txtbox startdate" id="EndDate" value="<?php echo date('Y-m-d');?>" />
@@ -57,7 +57,7 @@
 			</tr>
 				
 			</table>
-		</form>	
+		</form>	-->
 
           </div>
 
@@ -66,11 +66,10 @@
               <tr>
             
                <th class="red header">Name</th>
-                <th class="yellow header headerSortDown">UserName</th>
-                <th class="red header">Email</th>
-                <th class="green header">UserType</th>
-                <th class="red header">Profile</th>
-				<th class="red header">Region</th>
+                <th class="yellow header headerSortDown">Email</th>
+                <th class="red header">Mobile</th>
+                <th class="green header">Aadhar No</th>
+                
                 
                 
               
@@ -84,12 +83,10 @@
               foreach($users as $row)
               {
 				echo '<tr>';
-                echo '<td>'.$row->firstname.' '.$row->lastname.'</td>';
-				echo '<td>'.$row->name.'</td>';
+                echo '<td>'.$row->f_name.' '.$row->l_name.'</td>';
                 echo '<td>'.$row->email.'</td>';
-                echo '<td>'.$row->access.'</td>';
-                echo '<td>'.$row->profile.'</td>';
-                echo '<td>'.$row->region.'</td>';
+                echo '<td>'.$row->mobile.'</td>';
+                echo '<td>'.$row->aadhar_no.'</td>';
 			      echo '<td class="crud-actions">
                   <a href="'.site_url("admin").'/administrator/update/'.$row->id.'" class="btn btn-info">view & edit</a>  
                   <a href="'.site_url("admin").'/administrator/delete/'.$row->id.'" onclick="return areyousure();" class="btn btn-danger">delete</a>
