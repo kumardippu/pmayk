@@ -65,6 +65,7 @@
             <thead>
               <tr>
             
+               <th class="red header">ID</th>
                <th class="red header">Name</th>
                 <th class="yellow header headerSortDown">Email</th>
                 <th class="red header">Mobile</th>
@@ -83,6 +84,7 @@
               foreach($users as $row)
               {
 				echo '<tr>';
+				echo '<td>'.$row->id.'</td>';
                 echo '<td>'.$row->f_name.' '.$row->l_name.'</td>';
                 echo '<td>'.$row->email.'</td>';
                 echo '<td>'.$row->mobile.'</td>';
