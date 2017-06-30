@@ -65,33 +65,28 @@
             <thead>
               <tr>
             
-               <th class="red header">ID</th>
                <th class="red header">Name</th>
                 <th class="yellow header headerSortDown">Email</th>
                 <th class="red header">Mobile</th>
                 <th class="green header">Aadhar No</th>
-                
-                
-                
-              
-               <!-- <th class="red header">Manufacture</th>-->
+                <th class="green header">Payment</th>
+
                 <th class="red header">Actions</th>
               </tr>
             </thead>
             <tbody>
               <?php
 			 if(!empty($users)){
-              foreach($users as $row)
-              {
+              foreach($users as $row){
 				echo '<tr>';
-				echo '<td>'.$row->id.'</td>';
                 echo '<td>'.$row->f_name.' '.$row->l_name.'</td>';
                 echo '<td>'.$row->email.'</td>';
                 echo '<td>'.$row->mobile.'</td>';
                 echo '<td>'.$row->aadhar_no.'</td>';
+                echo '<td>'.($row->is_paid==0?'Pending':'Paid').'</td>';
 			      echo '<td class="crud-actions">
-                  <a href="'.site_url("admin").'/administrator/update/'.$row->id.'" class="btn btn-info">view & edit</a>  
-                  <a href="'.site_url("admin").'/administrator/delete/'.$row->id.'" onclick="return areyousure();" class="btn btn-danger">delete</a>
+                  <a href="'.site_url("user").'/view/'.$row->id.'" class="btn btn-info">View / Edit</a>  
+                  <a href="'.site_url("user").'/delete/'.$row->id.'" onclick="return areyousure();" class="btn btn-danger">Delete</a>
                 </td>';
                 echo '</tr>';
               }
@@ -106,3 +101,8 @@
 
       </div>
     </div>
+   <script type="text/javascript">
+		function areyousure(){
+			return confirm("Are you sure?");
+		}
+</script>

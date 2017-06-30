@@ -34,7 +34,7 @@ class Login extends CI_Controller {
 		$password = $this->__encrip_password($this->input->post('password'));
 
 		$is_valid = $this->user_model->validate($user_name, $password);
-        $userdata['userdata'] = $this->user_model->get_user_by_id($is_valid);
+        $userdata['userdata'] = $this->user_model->get_admin_by_id($is_valid);
         $isadmin = FALSE;
         $array =   array_filter($userdata); 
         if(!empty($array)){

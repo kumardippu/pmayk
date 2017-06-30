@@ -7,11 +7,13 @@ class User_model extends CI_Model {
                 return $insert;
         }
 
-        public function get_users($limit_start=null, $limit_end=null,$count)
+        public function get_users($limit_start=null, $limit_end=null,$count,$status=1)
         {       
+
                 if($count){                    
                         $this->db->select('*');
                         $this->db->from('tbl_users');
+                        $this->db->where('status',$status);
                         $this->db->limit($limit_start, $limit_end);
                         $query = $this->db->get();
                         return $query->num_rows(); 
@@ -19,6 +21,7 @@ class User_model extends CI_Model {
                 }else{
                       $this->db->select('*');
                       $this->db->from('tbl_users');
+                      $this->db->where('status',$status);
                       $this->db->limit($limit_start, $limit_end);                  
                       $this->db->order_by('id','DESC');
                       $query = $this->db->get();
@@ -112,10 +115,20 @@ class User_model extends CI_Model {
         }
 
 
-        function get_user_by_id( $id ) {     
+        function get_admin_by_id( $id ) {     
           $this->db->where('id', $id);
           $query = $this->db->get('tbl_admin');
           return $query->row();
         }       
 
+      function get_user_by_id( $id ) {     
+        $this->db->where('id', $id);
+        $query = $this->db->get('tbl_users');
+        return $query->row();
+      }       
+    function updateUser($uid,$data){
+      $this->db->where('id',$uid);
+      return $this->db->update('tbl_users',$data);    
+  } 
+          
 }
