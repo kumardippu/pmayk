@@ -10,39 +10,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-5">
+                
+                <!--<div class="col-sm-5">
                     <div class="device-container">
                         <div class="device-mockup iphone6_plus portrait white">
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="<?php echo base_url('assets/img/demo-screen-1.jpg')?>" class="img-responsive" alt="">
+                                    <!--<img src="<?php echo base_url('assets/img/demo-screen-1.jpg')?>" class="img-responsive" alt="">
                                 </div>
                                 <div class="button">
                                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
+                                <!--</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
         </div>
     </header>
 
-    <section id="about" class="download bg-primary text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
-                    <p>Our app is available on any mobile device! Download now to get started!</p>
-                    <div class="badges">
-                        <a class="badge-link" href="#"><img src="<?php echo base_url('assets/img/google-play-badge.svg');?>" alt=""></a>
-                        <a class="badge-link" href="#"><img src="<?php echo base_url('assets/img/app-store-badge.svg');?>" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="about" class="download bg-primary ">
+        <?php include('includes/about.php'); ?>
     </section>
     <?php if(isset($isValidated) && $isValidated===FALSE){ ?>
     <script type="text/javascript">$(function() { 
@@ -130,7 +120,7 @@
     </section>
 
 
-    <section id="features" class="features">
+    <!--<section id="features" class="features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -148,10 +138,10 @@
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="<?php echo base_url('assets/img/demo-screen-1.jpg')?>" class="img-responsive" alt=""> </div>
+                                   <!-- <img src="<?php echo base_url('assets/img/demo-screen-1.jpg')?>" class="img-responsive" alt=""> </div>
                                 <div class="button">
                                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
+                                <!--</div>
                             </div>
                         </div>
                     </div>
@@ -194,13 +184,13 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <section class="cta">
         <div class="cta-content">
             <div class="container">
-                <h2>Stop waiting.<br>Start building.</h2>
-                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+                <h2>Stop waiting.<br>Start registrering.</h2>
+                <a href="#register" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
             </div>
         </div>
         <div class="overlay"></div>
@@ -208,7 +198,8 @@
 
     <section id="contact" class="contact bg-primary">
         <div class="container">
-            <h2>We <i class="fa fa-heart"></i> new friends!</h2>
+            <!--<h2>We <i class="fa fa-heart"></i> new friends!</h2>-->
+            <h2>You can touch with us!</h2>
             <ul class="list-inline list-social">
                 <li class="social-twitter">
                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -221,6 +212,8 @@
                 </li>
             </ul>
         </div>
+        <p>G 889 Sangam Vihar<br>New Delhi</p>
+        <p>Mob.  +91-9716179227</p>
     </section>
 <script src="<?php echo base_url('assets/lib/jquery/jquery.validate.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
