@@ -5,7 +5,7 @@
                 <div class="col-sm-7">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <h1>New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>
+                            <h1>We setup a technology to facilitate Pradhan Mantri Awas Yojana.</h1>
                             <a href="#register" class="btn btn-outline btn-xl page-scroll">Register Now!</a>
                         </div>
                     </div>
