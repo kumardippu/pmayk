@@ -7,8 +7,7 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->model(array('user_model'));
     }	
-	public function index()
-	{
+	public function index(){
 		//$this->load->helper('url'); //autoloaded
 		
 		//$this->load->view('welcome_message');
@@ -21,6 +20,9 @@ class Home extends CI_Controller {
         $data['main_content'] = 'thanks';*/
         $this->load->view('includes/template', $data);
 	}
+    public function search(){
+        print_r($this->input->post());
+    }
 	public function registration(){
         $this->load->library('form_validation'); 
         // $this->load->helper('security'); // Used for xss_clean

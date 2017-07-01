@@ -50,6 +50,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+
                     <li>
                         <a class="page-scroll" href="#about">About</a>
                     </li>
@@ -59,6 +60,20 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+
+                    <li> <?php $attributes = array('class' => 'navbar-form', 'id' => 'search_form', 'name' => 'search_form');
+                                echo validation_errors();             
+                                echo form_open('home/search', $attributes);
+                            ?>
+                        <div class="input-group add-on">  
+                            <input type="text" class="form-control" name="search" placeholder="Search here" />
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                             </div>
+                        </div>
+                        <?php echo form_close(); ?>
+                    </li>                    
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
