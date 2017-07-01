@@ -6,11 +6,11 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h1>New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>
-                            <a href="#register" class="btn btn-outline btn-xl page-scroll">Start Now for Free!</a>
+                            <a href="#register" class="btn btn-outline btn-xl page-scroll">Register Now!</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!--<div class="col-sm-5">
                     <div class="device-container">
                         <div class="device-mockup iphone6_plus portrait white">
