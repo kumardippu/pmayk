@@ -13,6 +13,13 @@ class Home extends CI_Controller {
 		//$this->load->view('welcome_message');
 		$data[] = array();
 
+        if ($this->input->server('REQUEST_METHOD') === 'POST'){
+            $term = $this->input->post('search');
+            $user = $this->user_model->end_user_search(null,null,FALSE,$term);
+            $data['user'] = $user;
+            $data['is_searched'] = TRUE;
+        }
+
 		$data['header'] = 'includes/header';
 		$data['footer'] = 'includes/footer';
 		$data['main_content'] = 'home';

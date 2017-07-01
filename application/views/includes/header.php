@@ -63,7 +63,7 @@
 
                     <li> <?php $attributes = array('class' => 'navbar-form', 'id' => 'search_form', 'name' => 'search_form');
                                 echo validation_errors();             
-                                echo form_open('home/search', $attributes);
+                                echo form_open('', $attributes);
                             ?>
                         <div class="input-group add-on">  
                             <input type="text" class="form-control" name="search" placeholder="Search here" />

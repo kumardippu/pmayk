@@ -29,6 +29,35 @@ class User_model extends CI_Model {
                 }
         }
 
+        
+        public function end_user_search($limit_start=null, $limit_end=null,$count=false,$term=null)
+        {
+              if( !empty($term) ){
+                      if($count){
+                             $this->db->select('*');
+                             $this->db->from('tbl_users');
+                             //$this->db->where('status',1);
+                             if(!empty($term)){
+                               $this->db->where('(refrence_no LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
+                             }
+                             $query = $this->db->get();
+                             return $query->num_rows();   
+                      }else{
+                             $this->db->select('*');
+                             $this->db->from('tbl_users');
+                             //$this->db->where('status',1);
+                             if(!empty($term)){
+                                  $this->db->where('(refrence_no LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
+                             }
+
+                             $this->db->limit($limit_start, $limit_end);                 
+                             $this->db->order_by('id','ASC');
+                             $query = $this->db->get();
+                             return $query->result();           
+                      } 
+              } 
+        }
+
         public function user_search($limit_start=null, $limit_end=null,$count,$usertype=null,$term=null)
         {
               if( !empty($term) ){
