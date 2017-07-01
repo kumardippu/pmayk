@@ -12,7 +12,7 @@
       </ul>      
       <div class="page-header">
         <h2>
-          Adding <?php echo ucfirst($this->uri->segment(2));?>
+          <?php echo ucfirst($this->uri->segment(2));?> User
         </h2>
       </div>
 
@@ -89,6 +89,12 @@
            <label for="inputError" class="control-label">Aadhar No</label>
           <div class="controls">
          <input type="text" required="required" name="aadhar" value="<?php echo $users->aadhar_no; ?>" disabled>
+          </div>
+      </div>
+      <div class="control-group">
+           <label for="inputError" class="control-label">Refrence No</label>
+          <div class="controls">
+         <input type="text" required="required" name="refrence_no" value="<?php echo $users->refrence_no; ?>" disabled>
           </div>
       </div>
       <div class="control-group">

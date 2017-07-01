@@ -69,6 +69,7 @@
                 <th class="yellow header headerSortDown">Email</th>
                 <th class="red header">Mobile</th>
                 <th class="green header">Aadhar No</th>
+                <th class="green header">Refrence No</th>
                 <th class="green header">Payment</th>
 
                 <th class="red header">Actions</th>
@@ -83,6 +84,7 @@
                 echo '<td>'.$row->email.'</td>';
                 echo '<td>'.$row->mobile.'</td>';
                 echo '<td>'.$row->aadhar_no.'</td>';
+                echo '<td>'.$row->refrence_no.'</td>';
                 echo '<td>'.($row->is_paid==0?'Pending':'Paid').'</td>';
 			      echo '<td class="crud-actions">
                   <a href="'.site_url("user").'/view/'.$row->id.'" class="btn btn-info">View / Edit</a>  

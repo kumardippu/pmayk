@@ -36,7 +36,7 @@ class User_model extends CI_Model {
                       if($count){
                              $this->db->select('*');
                              $this->db->from('tbl_users');
-                             //$this->db->where('status',1);
+                             $this->db->where('status',1);
                              if(!empty($term)){
                                $this->db->where('(refrence_no LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
                              }
@@ -45,7 +45,7 @@ class User_model extends CI_Model {
                       }else{
                              $this->db->select('*');
                              $this->db->from('tbl_users');
-                             //$this->db->where('status',1);
+                             $this->db->where('status',1);
                              if(!empty($term)){
                                   $this->db->where('(refrence_no LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
                              }
@@ -67,7 +67,7 @@ class User_model extends CI_Model {
                              if(!empty($term)){
                                $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
                              }else{
-                               //$this->db->where('access',$usertype);
+                               $this->db->where('access',$usertype);
                              }
                              $query = $this->db->get();
                              return $query->num_rows();   
@@ -77,7 +77,7 @@ class User_model extends CI_Model {
                              if(!empty($term)){
                                         $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
                              }else{
-                               //$this->db->where('access',$usertype);
+                               $this->db->where('access',$usertype);
                              }
                              $this->db->limit($limit_start, $limit_end);                 
                              $this->db->order_by('id','ASC');
