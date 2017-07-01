@@ -14,15 +14,22 @@ class User extends CI_Controller {
     */	
 	function index(){
         $config = array();
-        $config["base_url"] = base_url() . "admin/user";
-        $config["total_rows"] = $this->user_model->get_users(null,null,TRUE,1);        
+        $config["base_url"] = base_url() . "admin/user";        
         $config["per_page"] = 10;
-        $config["uri_segment"] = 3; 
-        $this->pagination->initialize($config); 
+        $config["uri_segment"] = 3;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        //echo $config['per_page']."->".$page."<->";print_r($config);exit;
-        $data["users"] = $this->user_model->get_users($config["per_page"], $page,FALSE,1);
-        //print_r(count($data['users']) );exit;
+        if ($this->input->server('REQUEST_METHOD') === 'POST'){
+            $term = $this->input->post('term');
+            $config["total_rows"] = $this->user_model->user_search(null,null,TRUE,1,$term);
+            $data["users"] = $this->user_model->user_search($config["per_page"], $page,FALSE,1,$term);                
+        }else{
+            $config["total_rows"] = $this->user_model->get_users(null,null,TRUE,1);
+            $data["users"] = $this->user_model->get_users($config["per_page"], $page,FALSE,1);            
+        }
+
+        //print_r(count($data['users']) );exit;        
+
+        $this->pagination->initialize($config); 
         $data["links"] = $this->pagination->create_links();
         //print_r($data['links']);exit;
 		$data['main_content'] = 'admin/user/list';
@@ -30,7 +37,7 @@ class User extends CI_Controller {
 	}
 
     /**
-    * Update item by his id
+    * Update /view item by  id
     * @return void
     */
     public function view(){        

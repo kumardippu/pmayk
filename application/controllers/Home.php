@@ -58,6 +58,7 @@ class Home extends CI_Controller {
 						'aadhar_no'	=> $this->input->post('aadhar'),
 						'agent_ref'	=> $this->input->post('agent'),
 						'created_on'=> date('Y-m-d H:i:s'),
+                        'status'=> 1,
                         'refrence_no'=>$refrenc_no
 					);
 			

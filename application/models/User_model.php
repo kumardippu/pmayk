@@ -31,31 +31,31 @@ class User_model extends CI_Model {
 
         public function user_search($limit_start=null, $limit_end=null,$count,$usertype=null,$term=null)
         {
-                if((!empty($term))||(!empty($usertype))){
-                        if($count){
-                               $this->db->select('*');
-                               $this->db->from('tbl_users');
-                               if(!empty($term)){
-                                 $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
-                               }else{
-                                 $this->db->where('access',$usertype);
-                               }
-                               $query = $this->db->get();
-                               return $query->num_rows();   
-                        }else{
-                               $this->db->select('*');
-                               $this->db->from('users');
-                               if(!empty($term)){
-                                          $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
-                               }else{
-                                $this->db->where('access',$usertype);
-                               }
-                               $this->db->limit($limit_start, $limit_end);                 
-                               $this->db->order_by('name','ASC');
-                               $query = $this->db->get();
-                               return $query->result();           
-                        } 
-                } 
+              if( !empty($term) ){
+                      if($count){
+                             $this->db->select('*');
+                             $this->db->from('tbl_users');
+                             if(!empty($term)){
+                               $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
+                             }else{
+                               //$this->db->where('access',$usertype);
+                             }
+                             $query = $this->db->get();
+                             return $query->num_rows();   
+                      }else{
+                             $this->db->select('*');
+                             $this->db->from('tbl_users');
+                             if(!empty($term)){
+                                        $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
+                             }else{
+                               //$this->db->where('access',$usertype);
+                             }
+                             $this->db->limit($limit_start, $limit_end);                 
+                             $this->db->order_by('id','ASC');
+                             $query = $this->db->get();
+                             return $query->result();           
+                      } 
+              } 
         }
 
         function update_user($id, $data)
