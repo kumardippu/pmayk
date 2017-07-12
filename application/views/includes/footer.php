@@ -12,6 +12,7 @@
                     <a href="#">FAQ</a>
                 </li>
             </ul>
+            <p>Developed By <a href="http://kumardippu.com" target="_blank">www.kumardippu.com</a></p>
         </div>
     </footer>
 

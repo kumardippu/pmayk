@@ -23,6 +23,9 @@
 	          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Content<b class="caret"></b></a>-->
 	          <a href="<?php echo base_url(); ?>admin/user">User</a>
 	        </li>
+	       	<li class="dropdown">
+	          <a href="<?php echo base_url(); ?>admin/agent">Agent</a>
+	        </li>
 	      	<li class="dropdown">
 	          <a href="<?php echo base_url(); ?>admin/logout">Logout</a>
 	        </li>

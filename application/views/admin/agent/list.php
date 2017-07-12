@@ -13,7 +13,7 @@
         </li>
       </ul>
 
-      <div class="page-header users-header">
+      <div class="page-header agents-header">
         <h2>
          <?php echo ucfirst($this->uri->segment(2));?> 		  
 			<!--<a  href="<?php echo site_url("admin").'/'.$this->uri->segment(2); ?>/add" class="btn btn-success">Add a new</a>
@@ -33,13 +33,13 @@
           <div class="well">
 
 
-         <a href="<?php echo base_url('administrator/allUSersReport'); ?>" style="float:right;"><input type="button" class="btn btn-success" name="search" value="Add Agent"/></a>
+         <a href="<?php echo base_url('agent/view'); ?>" style="float:right;"><input type="button" class="btn btn-success" name="search" value="Add Agent"/></a>
 			    <!--<form method="post" action="<?php echo base_url('administrator/exportInfraReport');?>">
 				From: <input type="text"  class="txtbox startdate" name="from" id="StartDate" value="<?php echo date('Y-m-d');?>" />
                 &nbsp;To: <input type="text" name="to" class="txtbox startdate" id="EndDate" value="<?php echo date('Y-m-d');?>" />
                 <input type="submit" name="infrareport" value="Export Infra	" class="btn btn-success" />
            </form>-->
-			<form action="<?php echo site_url('admin/user');?>" method="post">			
+			<form action="<?php echo site_url('admin/agent');?>" method="post">			
 			<table class="table table-striped table-bordered table-condensed">
 			<tr>
 			<!--<td>
@@ -73,28 +73,24 @@
                <th class="red header">Name</th>
                 <th class="yellow header headerSortDown">Email</th>
                 <th class="red header">Mobile</th>
-                <th class="green header">Aadhar No</th>
-                <th class="green header">Refrence No</th>
-                <th class="green header">Payment</th>
-
+                <th class="green header">Agent Code</th>
                 <th class="red header">Actions</th>
               </tr>
             </thead>
             <tbody>
               <?php
-			 if(!empty($users)){
-              foreach($users as $row){
+			 if(!empty($agents)){
+              foreach($agents as $row){
 				echo '<tr>';
-                echo '<td>'.$row->f_name.' '.$row->l_name.'</td>';
+                echo '<td>'.$row->name.'</td>';
                 echo '<td>'.$row->email.'</td>';
                 echo '<td>'.$row->mobile.'</td>';
-                echo '<td>'.$row->aadhar_no.'</td>';
-                echo '<td>'.$row->refrence_no.'</td>';
-                echo '<td>'.($row->is_paid==0?'Pending':'Paid').'</td>';
+                echo '<td>'.$row->agent_code.'</td>';
+    
 			      echo '<td class="crud-actions">
-                  <a href="'.site_url("user").'/view/'.$row->id.'" class="btn btn-info">View / Edit</a>';
+                  <a href="'.site_url("agent").'/view/'.$row->id.'" class="btn btn-info">View / Edit</a>';
                   if($user_access==1){  
-                    echo '<a href="'.site_url("user").'/delete/'.$row->id.'" onclick="return areyousure();" class="btn btn-danger">Delete</a>';
+                    //echo '<a href="'.site_url("agent").'/delete/'.$row->id.'" onclick="return areyousure();" class="btn btn-danger">Delete</a>';
                   }
                echo  '</td>';
                 echo '</tr>';

@@ -1,11 +1,11 @@
 <?php
-class User extends CI_Controller {
+class Agent extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         if(!$this->session->userdata('is_logged_in')){
             redirect('admin/login');
         }
-        $this->load->model(array('user_model'));
+        $this->load->model(array('agent_model'));
     }
     /**
     * Check if the user is logged in, if he's not, 
@@ -23,11 +23,11 @@ class User extends CI_Controller {
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         if ($this->input->server('REQUEST_METHOD') === 'POST'){
             $term = $this->input->post('term');
-            $config["total_rows"] = $this->user_model->user_search(null,null,TRUE,1,$term);
-            $data["users"] = $this->user_model->user_search($config["per_page"], $page,FALSE,1,$term);                
+            $config["total_rows"] = $this->agent_model->agent_search(null,null,TRUE,1,$term);
+            $data["agents"] = $this->agent_model->agent_search($config["per_page"], $page,FALSE,1,$term);                
         }else{
-            $config["total_rows"] = $this->user_model->get_users(null,null,TRUE,1,$user_access,$userid);
-            $data["users"] = $this->user_model->get_users($config["per_page"], $page,FALSE,1,$user_access,$userid);            
+            $config["total_rows"] = $this->agent_model->get_agents(null,null,TRUE,1);
+            $data["agents"] = $this->agent_model->get_agents($config["per_page"], $page,FALSE,1);            
         }
 
         //print_r(count($data['users']) );exit;        
@@ -35,7 +35,7 @@ class User extends CI_Controller {
         $this->pagination->initialize($config); 
         $data["links"] = $this->pagination->create_links();
         //print_r($data['links']);exit;
-		$data['main_content'] = 'admin/user/list';
+		$data['main_content'] = 'admin/agent/list';
         $this->load->view('admin/includes/template', $data);  
 	}
 
@@ -51,7 +51,7 @@ class User extends CI_Controller {
         if ($this->input->server('REQUEST_METHOD') === 'POST'){
           //print_r($this->input->post());exit;
             //form validation
-            $this->form_validation->set_rules('fname', 'First Name', 'required|xss_clean');
+            $this->form_validation->set_rules('name', 'Name', 'required|xss_clean');
             $this->form_validation->set_rules('lname', 'Last Name', 'required|xss_clean');
             $this->form_validation->set_rules('father', 'Father Name', 'required|xss_clean');
             $this->form_validation->set_rules('mother', 'Mother Name', 'required|xss_clean');
@@ -72,7 +72,7 @@ class User extends CI_Controller {
                     $save['amount'] = $this->input->post('amount');
                     $save['updated_on'] = date("Y-m-d H:i:s");
                     
-                    if($this->user_model->updateUser($id, $save) == TRUE){
+                    if($this->agent_model->updateUser($id, $save) == TRUE){
                        $this->session->set_flashdata('flash_message', 'updated');
                        /*if($pass){
                          $to = $save['email'];
@@ -95,10 +95,10 @@ class User extends CI_Controller {
 
         }
         //$data['l3user'] = $this->users_model->get_user_by_id( $id );
-        $data['users'] = $this->user_model->get_user_by_id( $id );
+        $data['agent'] = $this->agent_model->get_agent_by_id( $id );
         //print_r($data['users']);exit;
         //load the view
-        $data['main_content'] = 'admin/user/view';
+        $data['main_content'] = 'admin/agent/view';
         $this->load->view('admin/includes/template', $data);  
 
         /*$data['main_content'] = 'admin/administrator/edit';
@@ -112,12 +112,12 @@ class User extends CI_Controller {
         $data['status'] = 2;
         
         $data['updated_on'] = date('Y-m-d H:i:s');
-        $this->user_model->updateUser($id,$data);
+        $this->agent_model->updateUser($id,$data);
         redirect('admin/user');
     }//delete
 
     function isMobileExist($str){
-        $count = $this->user_model->isMobileExist($str);//$this->auth->check_email($str, $this->admin_id);
+        $count = $this->agent_model->isMobileExist($str);//$this->auth->check_email($str, $this->admin_id);
         if ($count){
             $this->form_validation->set_message('isMobileExist', 'Mobile already exist');
             return FALSE;
@@ -127,7 +127,7 @@ class User extends CI_Controller {
     }
 
     function isAadharExist($str){
-        $count = $this->user_model->isAadharExist($str);//$this->auth->check_email($str, $this->admin_id);
+        $count = $this->agent_model->isAadharExist($str);//$this->auth->check_email($str, $this->admin_id);
         if ($count){
             $this->form_validation->set_message('isMobileExist', 'Aadhar no already exist');
             return FALSE;

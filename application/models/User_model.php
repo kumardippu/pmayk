@@ -7,26 +7,31 @@ class User_model extends CI_Model {
                 return $insert;
         }
 
-        public function get_users($limit_start=null, $limit_end=null,$count,$status=1)
-        {       
-
-                if($count){                    
-                        $this->db->select('*');
-                        $this->db->from('tbl_users');
-                        $this->db->where('status',$status);
-                        $this->db->limit($limit_start, $limit_end);
-                        $query = $this->db->get();
-                        return $query->num_rows(); 
-                    
-                }else{
+        public function get_users($limit_start=null, $limit_end=null,$count,$status=1,$isAdmin=1,$userid=0)
+        {
+             if($count){                    
                       $this->db->select('*');
                       $this->db->from('tbl_users');
                       $this->db->where('status',$status);
-                      $this->db->limit($limit_start, $limit_end);                  
-                      $this->db->order_by('id','DESC');
+                      if($isAdmin==2){
+                        $this->db->where('created_by',$userid);
+                      }
+                      $this->db->limit($limit_start, $limit_end);
                       $query = $this->db->get();
-                      return $query->result();  
-                }
+                      return $query->num_rows(); 
+                  
+              }else{
+                    $this->db->select('*');
+                    $this->db->from('tbl_users');
+                    $this->db->where('status',$status);
+                    if($isAdmin==2){
+                        $this->db->where('created_by',$userid);
+                    }
+                    $this->db->limit($limit_start, $limit_end);                  
+                    $this->db->order_by('id','DESC');
+                    $query = $this->db->get();
+                    return $query->result();  
+              }
         }
 
         
@@ -65,7 +70,7 @@ class User_model extends CI_Model {
                              $this->db->select('*');
                              $this->db->from('tbl_users');
                              if(!empty($term)){
-                               $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
+                               $this->db->where('(refrence_no LIKE "%'.$term.'%" OR f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
                              }else{
                                $this->db->where('access',$usertype);
                              }
@@ -75,7 +80,7 @@ class User_model extends CI_Model {
                              $this->db->select('*');
                              $this->db->from('tbl_users');
                              if(!empty($term)){
-                                        $this->db->where('(f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
+                                        $this->db->where('(refrence_no LIKE "%'.$term.'%" OR f_name LIKE "%'.$term.'%" OR l_name LIKE "%'.$term.'%" OR email LIKE "%'.$term.'%" OR mobile LIKE "%'.$term.'%"  OR aadhar_no LIKE "%'.$term.'%")');
                              }else{
                                $this->db->where('access',$usertype);
                              }
@@ -129,6 +134,7 @@ class User_model extends CI_Model {
         function validate($user_name, $password){
           $this->db->where('email', $user_name);
           $this->db->where('password', $password);
+          $this->db->where('status', 1);
           $query = $this->db->get('tbl_admin');
           //print_r($this->db->affected_rows());
           if($query->num_rows() == 1){            

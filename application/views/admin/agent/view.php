@@ -49,62 +49,35 @@
          <div class="control-group">
              <label for="inputError" class="control-label">First Name</label>
             <div class="controls">
-			     <input type="text" required="required" name="fname" value="<?php echo $users->f_name; ?>" >
+			     <input type="text" required="required" name="fname" value="<?php echo $agent->name; ?>" >
             </div>
 		  </div>
-
-	     <div class="control-group">
-             <label for="inputError" class="control-label">Last Name</label>
-            <div class="controls">
-			     <input type="text" required="required" name="lname" value="<?php echo $users->l_name; ?>" >
-            </div>
-		  </div>
-
-    <div class="control-group">
-             <label for="inputError" class="control-label">Father Name</label>
-            <div class="controls">
-           <input type="text"  name="father" value="<?php echo $users->father; ?>" >
-            </div>
-    </div>
-
-    <div class="control-group">
-             <label for="inputError" class="control-label">Mother Name</label>
-            <div class="controls">
-           <input type="text"  name="mother" value="<?php echo $users->mother; ?>" >
-            </div>
-    </div>
 
 	   	<div class="control-group">
              <label for="inputError" class="control-label">Email</label>
             <div class="controls">
-			     <input type="email" required="required" name="email" value="<?php echo $users->email; ?>" disabled>
+			     <input type="email" required="required" name="email" value="<?php echo $agent->email; ?>" >
             </div>
 		  </div>
 
     <div class="control-group">
            <label for="inputError" class="control-label">Mobile</label>
           <div class="controls">
-         <input type="text" required="required" name="mobile" value="<?php echo $users->mobile; ?>" disabled>
+         <input type="text" required="required" name="mobile" value="<?php echo $agent->mobile; ?>" >
           </div>
       </div>
       <div class="control-group">
-           <label for="inputError" class="control-label">Aadhar No</label>
+           <label for="inputError" class="control-label">Agent Code</label>
           <div class="controls">
-         <input type="text" required="required" name="aadhar" value="<?php echo $users->aadhar_no; ?>" disabled>
+         <input type="text" required="required" name="agent_code" value="<?php echo $agent->agent_code; ?>" disabled>
           </div>
       </div>
-      <div class="control-group">
-           <label for="inputError" class="control-label">Refrence No</label>
-          <div class="controls">
-         <input type="text" required="required" name="refrence_no" value="<?php echo $users->refrence_no; ?>" disabled>
-          </div>
-      </div>
-      <div class="control-group">
+     <!-- <div class="control-group">
              <label for="inputError" class="control-label">Payment</label>
             <div class="controls">
    			<?php       
   					$options = array('0'=> 'Pending','1'=> 'Paid');
-            $select = $users->is_paid;
+            $select = $agent->is_paid;
             $extra  = array('disabled'=>false);
             if($user_access==1)
               $extra   = array();
@@ -112,8 +85,8 @@
 				?>
 
             </div>
-		</div>
-        <input type="hidden"  name="amount" value="500" >
+		</div>-->
+        <input type="hidden"  name="user_type" value="2" >
 		
 		   
           <div class="form-actions">

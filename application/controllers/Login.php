@@ -35,17 +35,20 @@ class Login extends CI_Controller {
 
 		$is_valid = $this->user_model->validate($user_name, $password);
         $userdata['userdata'] = $this->user_model->get_admin_by_id($is_valid);
-        $isadmin = FALSE;
+        
+        $isadmin = FALSE;   $isSubAdmin = FALSE;
         $array =   array_filter($userdata); 
         if(!empty($array)){
 			$user_type =  $userdata['userdata']->user_type;
             
             if($user_type==1){
 				$isadmin = TRUE;
+            }elseif ($user_type==2) {
+                $isSubAdmin=TRUE;
             }
         }
 
-		if($is_valid && $isadmin){
+		if($is_valid && ($isadmin||$isSubAdmin) ){
 			$data = array(
 				'user_name' => $user_name,
 				'is_logged_in' => true,

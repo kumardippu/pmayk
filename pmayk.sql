@@ -12,6 +12,8 @@ MySQL - 10.1.21-MariaDB : Database - pmayk
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+USE `pmayk`;
+
 /*Table structure for table `tbl_admin` */
 
 DROP TABLE IF EXISTS `tbl_admin`;
@@ -19,12 +21,16 @@ DROP TABLE IF EXISTS `tbl_admin`;
 CREATE TABLE `tbl_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
+  `agent_code` varchar(10) DEFAULT NULL,
+  `mobile` varchar(12) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `user_type` tinyint(1) DEFAULT '0' COMMENT 'super admin',
+  `status` tinyint(1) DEFAULT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `tbl_last_activity` */
 
@@ -35,7 +41,7 @@ CREATE TABLE `tbl_last_activity` (
   `user_id` int(11) DEFAULT NULL,
   `login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `tbl_users` */
 
@@ -52,13 +58,15 @@ CREATE TABLE `tbl_users` (
   `aadhar_no` varchar(20) DEFAULT NULL,
   `aadhar_reg_no` varchar(20) DEFAULT NULL,
   `agent_ref` varchar(20) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
   `dob` varchar(60) DEFAULT NULL,
   `refrence_no` varchar(20) DEFAULT NULL,
   `is_paid` tinyint(1) DEFAULT '0',
   `amount` varchar(10) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '0',
+  `status` tinyint(1) DEFAULT '1',
   `created_on` timestamp NULL DEFAULT NULL,
   `updated_on` timestamp NULL DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 

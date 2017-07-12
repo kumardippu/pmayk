@@ -56,10 +56,11 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /*admin*/
-$route['admin'] 		= 'login/index';
-$route['admin/user/(:any)'] = 'user/index/$1'; //$1 = page number
-$route['admin/signup'] 	= 'login/signup';
-$route['admin/create_member'] = 'login/create_member';
+$route['admin'] 				= 'login/index';
+$route['admin/user/(:any)'] 	= 'user/index/$1'; //$1 = page number
+$route['admin/agent'] 				= 'agent/index';
+$route['admin/agent/(:any)'] 	= 'agent/index/$1'; //$1 = page number
+
 $route['admin/login'] 	= 'login/index';
 $route['admin/logout'] 	= 'login/logout';
 $route['admin/login/validate_credentials'] = 'login/validate_credentials';
