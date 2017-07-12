@@ -58,7 +58,9 @@ $route['translate_uri_dashes'] = FALSE;
 /*admin*/
 $route['admin'] 				= 'login/index';
 $route['admin/user/(:any)'] 	= 'user/index/$1'; //$1 = page number
+$route['admin/add_agent'] 				= 'agent/add';
 $route['admin/agent'] 				= 'agent/index';
+
 $route['admin/agent/(:any)'] 	= 'agent/index/$1'; //$1 = page number
 
 $route['admin/login'] 	= 'login/index';

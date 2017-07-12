@@ -43,57 +43,55 @@
       //form validation
       echo validation_errors();
       
-      echo form_open('agent/view/'.$this->uri->segment(3).'', $attributes);
+      echo form_open('admin/add_agent', $attributes);
       ?>
         <fieldset>
          <div class="control-group">
              <label for="inputError" class="control-label">Name</label>
             <div class="controls">
-			     <input type="text" required="required" name="name" value="<?php echo $agent->name; ?>" >
+			     <input type="text" required="required" name="name" value="<?php echo set_value('name'); ?>" >
             </div>
 		  </div>
 
 	   	<div class="control-group">
              <label for="inputError" class="control-label">Email</label>
             <div class="controls">
-			     <input type="email" required="required" name="email" value="<?php echo $agent->email; ?>" >
+			     <input type="email" required="required" name="email" value="<?php echo set_value('email'); ?>" >
             </div>
 		  </div>
 
     <div class="control-group">
            <label for="inputError" class="control-label">Mobile</label>
           <div class="controls">
-         <input type="text" required="required" name="mobile" value="<?php echo $agent->mobile; ?>" >
+         <input type="text" required="required" name="mobile" value="<?php echo set_value('mobile'); ?>" >
           </div>
       </div>
       <div class="control-group">
            <label for="inputError" class="control-label">Agent Code</label>
           <div class="controls">
-         <input type="text" required="required" name="agent_code" value="<?php echo $agent->agent_code; ?>" >
+         <input type="text" required="required" name="agent_code" value="<?php echo set_value('agent_code'); ?>" >
           </div>
       </div>
 
+      <div class="control-group">
+           <label for="inputError" class="control-label">Password</label>
+          <div class="controls">
+         <input type="password" required="required" name="password" >
+          </div>
+      </div>
 
-     <!-- <div class="control-group">
-             <label for="inputError" class="control-label">Payment</label>
-            <div class="controls">
-   			<?php       
-  					$options = array('0'=> 'Pending','1'=> 'Paid');
-            $select = $agent->is_paid;
-            $extra  = array('disabled'=>false);
-            if($user_access==1)
-              $extra   = array();
-					echo form_dropdown('paid', $options,$select,$extra);
-				?>
-
-            </div>
-		</div>-->
+      <div class="control-group">
+           <label for="inputError" class="control-label">Confirm Password</label>
+          <div class="controls">
+         <input type="password" required="required" name="confirm_password" >
+          </div>
+      </div>
         <input type="hidden"  name="user_type" value="2" >
 		
 		   
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Update</button>
-            <a href="<?php echo site_url('admin/agent'); ?>" /><input type="button" class="btn" value="Cancel"/></a>
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <a href="<?php echo site_url('admin'); ?>" /><input type="button" class="btn" value="Cancel"/></a>
           </div>
         </fieldset>
 

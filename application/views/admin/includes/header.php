@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <script src="<?php echo base_url();?>assets/lib/jquery/jquery.min.js"></script>
 <link href="<?php echo base_url(); ?>assets/css/global.css" rel="stylesheet" type="text/css">
+<?php $user_access = $this->session->userdata('access'); ?>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
@@ -23,9 +24,11 @@
 	          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Content<b class="caret"></b></a>-->
 	          <a href="<?php echo base_url(); ?>admin/user">User</a>
 	        </li>
+	       	<?php if($user_access ==1){ ?>
 	       	<li class="dropdown">
 	          <a href="<?php echo base_url(); ?>admin/agent">Agent</a>
 	        </li>
+	        <?php } ?>
 	      	<li class="dropdown">
 	          <a href="<?php echo base_url(); ?>admin/logout">Logout</a>
 	        </li>
