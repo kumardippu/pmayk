@@ -233,7 +233,7 @@
             </ul>
         </div>
         <p>Branch Office : G 889 Sangam Vihar<br>New Delhi</p>
-        <p>Mob.  +91-9716179227</p>
+        <p>Mob.  +91-8076681140</p>
     </section>
 <script src="<?php echo base_url('assets/lib/jquery/jquery.validate.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>

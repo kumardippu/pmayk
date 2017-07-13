@@ -94,6 +94,23 @@
           <input type="text" name="aadhar" value="<?php echo set_value('aadhar'); ?>">
           </div>
       </div>
+
+      <div class="control-group">
+          <label for="inputError" class="control-label">Area Type</label>
+          <div class="controls">
+            <input type="radio" name="area" value="urban" checked="true">Urban 
+            <input type="radio" name="area" value="ruler">Ruler
+            <input type="radio" name="area" value="slum">Slum
+          </div>
+      </div>
+
+      <div class="control-group">
+          <label for="inputError" class="control-label">Current House</label>
+          <div class="controls">
+              <input type="radio" name="current_house" value="own" >Own House 
+              <input type="radio" name="current_house" value="rented" checked="true">Rented
+          </div>
+      </div>
 		   
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Submit</button>

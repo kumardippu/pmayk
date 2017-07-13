@@ -93,6 +93,25 @@
          <input type="text" required="required" name="aadhar" value="<?php echo $users->aadhar_no; ?>" disabled>
           </div>
       </div>
+
+      <div class="control-group">
+          <label for="inputError" class="control-label">Area Type</label>
+          <div class="controls">
+            <input type="radio" name="area" value="urban" <?php echo ($users->area_type=='urban'?'checked':'');?> >Urban 
+            <input type="radio" name="area" value="ruler" <?php echo ($users->area_type=='ruler'?'checked':'');?> >Ruler
+            <input type="radio" name="area" value="slum" <?php echo ($users->area_type=='slum'?'checked':'');?>>Slum
+          </div>
+      </div>
+
+      <div class="control-group">
+          <label for="inputError" class="control-label">Current House</label>
+          <div class="controls">
+              <input type="radio" name="current_house" value="own" <?php echo ($users->current_house=='own'?'checked':'');?> >Own House 
+              <input type="radio" name="current_house" value="rented" <?php echo ($users->current_house=='rented'?'checked':'');?> >Rented
+          </div>
+      </div>
+       
+
       <div class="control-group">
            <label for="inputError" class="control-label">Refrence No</label>
           <div class="controls">

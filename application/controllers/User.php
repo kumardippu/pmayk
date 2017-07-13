@@ -71,7 +71,9 @@ class User extends CI_Controller {
                         'email'     => $this->input->post('email'),
                         'mobile'    => $this->input->post('mobile'),
                         'aadhar_no' => $this->input->post('aadhar'),
-                        'agent_ref' => $this->input->post('agent'),
+                        //'agent_ref' => $this->input->post('agent'),
+                        'area_type' => $this->input->post('area'),
+                        'current_house' => $this->input->post('current_house'),
                         'created_on'=> date('Y-m-d H:i:s'),
                         'created_by'=> $userid,
                         'status'=> 1,
@@ -138,6 +140,8 @@ class User extends CI_Controller {
                     $save['mother'] = $this->input->post('mother');
                     //  $save['email'] = $this->input->post('email');
                     //$save['mobile'] = $this->input->post('mobile');
+                    $save['area_type'] = $this->input->post('area');
+                    $save['current_house'] = $this->input->post('current_house');
                     $save['is_paid'] = $this->input->post('paid');
                     $save['amount'] = $this->input->post('amount');
                     $save['updated_on'] = date("Y-m-d H:i:s");
