@@ -216,6 +216,11 @@
         <div class="overlay"></div>
     </section>
 
+
+<section id="gallery" >
+  <?php include('includes/gallery.php'); ?>
+</section>
+
     <section id="contact" class="contact bg-primary">
         <div class="container">
             <!--<h2>We <i class="fa fa-heart"></i> new friends!</h2>-->

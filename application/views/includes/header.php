@@ -58,6 +58,9 @@
                         <a class="page-scroll" href="#register">Register</a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="#gallery">Gallery</a>
+                    </li>
+                    <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
 
