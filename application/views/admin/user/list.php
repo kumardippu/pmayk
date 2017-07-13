@@ -86,7 +86,9 @@
 			 if(!empty($users)){
               foreach($users as $row){
 				echo '<tr>';
-                echo '<td>'.$row->f_name.' '.$row->l_name.'</td>';
+                $name = $row->f_name.' '.$row->l_name;
+                $refrence_no = $row->refrence_no;
+                echo '<td>'.$name.'</td>';
                 echo '<td>'.$row->email.'</td>';
                 echo '<td>'.$row->mobile.'</td>';
                 echo '<td>'.$row->aadhar_no.'</td>';
@@ -97,6 +99,8 @@
                   if($user_access==1){  
                     echo '<a href="'.site_url("user").'/delete/'.$row->id.'" onclick="return areyousure();" class="btn btn-danger">Delete</a>';
                   }
+               
+               echo '<a href="#" onclick="printDiv("'.$name.'","'.$refrence_no.'")" class="btn btn-info" >View / Edit</a>';
                echo  '</td>';
                 echo '</tr>';
               }
@@ -111,8 +115,30 @@
 
       </div>
     </div>
-   <script type="text/javascript">
+
+<div id="printableArea" style="display: none;">
+       <p><h2>Payment Receipt from pmayk.org</h2></p>
+       <p>Hi <span id="name"></span> Your refrence no is <span id="ref"></span></p>
+       <p>You paid <strong>500/-</strong></p>
+</div>
+
+<input type="button" onclick="printDiv('printableArea')" value="Print Invoice" />
+
+<script type="text/javascript">
 		function areyousure(){
 			return confirm("Are you sure?");
 		}
+    function printDiv(name,refrence_no) {
+      divName = 'printableArea';
+      $('#name').text('Dippu');      
+      var printContents = document.getElementById(divName).innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+    }
+</script>
+
+<script type="text/javascript">
+
 </script>
