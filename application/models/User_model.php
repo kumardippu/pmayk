@@ -28,7 +28,7 @@ class User_model extends CI_Model {
                         $this->db->where('created_by',$userid);
                     }
                     $this->db->limit($limit_start, $limit_end);                  
-                    $this->db->order_by('id','DESC');
+                    $this->db->order_by('is_paid','ASC');
                     $query = $this->db->get();
                     return $query->result();  
               }
@@ -85,7 +85,7 @@ class User_model extends CI_Model {
                                $this->db->where('access',$usertype);
                              }
                              $this->db->limit($limit_start, $limit_end);                 
-                             $this->db->order_by('id','ASC');
+                             $this->db->order_by('is_paid','ASC');
                              $query = $this->db->get();
                              return $query->result();           
                       } 
@@ -115,10 +115,10 @@ class User_model extends CI_Model {
             return true;
           }else{return false;}
         }
-        function isAadharExist($mobile){
+        function isAadharExist($aadhar){
           $this->db->select('id');
           $this->db->from('tbl_users');
-          $this->db->where('aadhar_no',$mobile);
+          $this->db->where('aadhar_no',$aadhar);
           $count = $this->db->count_all_results();
           if($count>0){
             return true;

@@ -113,13 +113,22 @@
             </div>
             <div class="form-group">
               <div class="col-sm-3">     
-              <label class="control-label" for="pwd">Agent Refrence:</label>                   
-                <input type="text" class="form-control" id="agent" placeholder="Enter agent refrence" name="agent" value="<?php echo set_value('agent'); ?>">
+              <label class="control-label" for="pwd">Area Type:</label>                   
+                <input type="radio" name="area" value="urban" checked="true">Urban 
+                <input type="radio" name="area" value="ruler">Ruler
+                <input type="radio" name="area" value="slum">Slum
+
               </div>
             </div>
 
-
-            <div class="form-group">        
+            <div class="form-group">
+              <div class="col-sm-3">     
+              <label class="control-label" for="pwd">Current House:</label>
+                <input type="radio" name="current_house" value="own" >Own House 
+                <input type="radio" name="current_house" value="rented" checked="true">Rented
+              </div>
+            </div>
+            <div class="form-group">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-default">Submit</button>
               </div>
@@ -223,7 +232,7 @@
                 </li>
             </ul>
         </div>
-        <p>G 889 Sangam Vihar<br>New Delhi</p>
+        <p>Branch Office : G 889 Sangam Vihar<br>New Delhi</p>
         <p>Mob.  +91-9716179227</p>
     </section>
 <script src="<?php echo base_url('assets/lib/jquery/jquery.validate.js'); ?>"></script>

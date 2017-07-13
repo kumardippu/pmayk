@@ -12,6 +12,8 @@ MySQL - 10.1.21-MariaDB : Database - pmayk
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`pmayk` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
 USE `pmayk`;
 
 /*Table structure for table `tbl_admin` */
@@ -30,7 +32,7 @@ CREATE TABLE `tbl_admin` (
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_on` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `tbl_last_activity` */
 
@@ -41,7 +43,7 @@ CREATE TABLE `tbl_last_activity` (
   `user_id` int(11) DEFAULT NULL,
   `login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `tbl_users` */
 
@@ -57,6 +59,8 @@ CREATE TABLE `tbl_users` (
   `mobile` varchar(15) DEFAULT NULL,
   `aadhar_no` varchar(20) DEFAULT NULL,
   `aadhar_reg_no` varchar(20) DEFAULT NULL,
+  `area_type` varchar(20) DEFAULT NULL,
+  `current_house` varchar(20) DEFAULT NULL,
   `agent_ref` varchar(20) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `dob` varchar(60) DEFAULT NULL,
@@ -68,7 +72,7 @@ CREATE TABLE `tbl_users` (
   `updated_on` timestamp NULL DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

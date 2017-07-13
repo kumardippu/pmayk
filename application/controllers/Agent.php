@@ -54,8 +54,8 @@ class Agent extends CI_Controller {
           //print_r($this->input->post());exit;
             //form validation
             $this->form_validation->set_rules('name', 'Name', 'required|xss_clean');
-            $this->form_validation->set_rules('email', 'Email', 'required|xss_clean|valid_email');
-            $this->form_validation->set_rules('mobile', 'Mobile', 'required|numeric|min_length[10]|max_length[10]|regex_match[/^[0-9]{10}$/]');
+            $this->form_validation->set_rules('email', 'Email', 'required|xss_clean|valid_email|callback_isEmailExist');
+            $this->form_validation->set_rules('mobile', 'Mobile', 'required|numeric|min_length[10]|max_length[10]|regex_match[/^[0-9]{10}$/]|callback_isMobileExist');
             $this->form_validation->set_rules('agent_code', 'Agent Code', 'required|xss_clean|callback_isAgentCodeExist');
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
@@ -178,6 +178,16 @@ class Agent extends CI_Controller {
         $count = $this->agent_model->isMobileExist($str);//$this->auth->check_email($str, $this->admin_id);
         if ($count){
             $this->form_validation->set_message('isMobileExist', 'Mobile already exist');
+            return FALSE;
+        }else{
+            return TRUE;
+        }
+    }
+
+    function isEmailExist($str){
+        $count = $this->agent_model->isEmailExist($str);//$this->auth->check_email($str, $this->admin_id);
+        if ($count){
+            $this->form_validation->set_message('isEmailExist', 'Email already exist');
             return FALSE;
         }else{
             return TRUE;

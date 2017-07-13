@@ -33,7 +33,7 @@
           <div class="well">
 
 
-         <a href="<?php echo base_url('admin/agent'); ?>" style="float:right;"><input type="button" class="btn btn-success" name="search" value="Add Agent"/></a>
+         <a href="<?php echo base_url('admin/add_agent'); ?>" style="float:right;"><input type="button" class="btn btn-success" name="search" value="Add Agent"/></a>
 			    <!--<form method="post" action="<?php echo base_url('administrator/exportInfraReport');?>">
 				From: <input type="text"  class="txtbox startdate" name="from" id="StartDate" value="<?php echo date('Y-m-d');?>" />
                 &nbsp;To: <input type="text" name="to" class="txtbox startdate" id="EndDate" value="<?php echo date('Y-m-d');?>" />

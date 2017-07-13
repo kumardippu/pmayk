@@ -78,6 +78,16 @@ class Agent_model extends CI_Model {
             return true;
           }else{return false;}
         }
+
+        function isEmailExist($email){
+          $this->db->select('id');
+          $this->db->from('tbl_admin');
+          $this->db->where('email',$email);
+          $count = $this->db->count_all_results();
+          if($count>0){
+            return true;
+          }else{return false;}
+        }
         
         function isAgentCodeExist($code){
           $this->db->select('id');

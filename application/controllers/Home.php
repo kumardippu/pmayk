@@ -39,7 +39,9 @@ class Home extends CI_Controller {
             $this->form_validation->set_rules('fname', 'First Name', 'required|xss_clean');
             $this->form_validation->set_rules('lname', 'Last Name', 'required|xss_clean');
             $this->form_validation->set_rules('mobile', 'Mobile', 'required|numeric|min_length[10]|max_length[10]|regex_match[/^[0-9]{10}$/]|callback_isMobileExist');
+
             $this->form_validation->set_rules('email', 'Email', 'required|trim|xss_clean|valid_email');
+            $this->form_validation->set_rules('aadhar', 'Aadhar No', 'required|numeric|min_length[12]|max_length[16]|callback_isAadharExist');
            /* $this->form_validation->set_rules('uname', 'User Name', 'required|xss_clean');
             $this->form_validation->set_rules('region', 'Region', 'required|xss_clean');
             $this->form_validation->set_rules('profile', 'Profile', 'required|xss_clean');
@@ -65,7 +67,9 @@ class Home extends CI_Controller {
                         'email' 	=> $this->input->post('email'),
 						'mobile' 	=> $this->input->post('mobile'),
 						'aadhar_no'	=> $this->input->post('aadhar'),
-						'agent_ref'	=> $this->input->post('agent'),
+                        'area_type' => $this->input->post('area'),
+                        'current_house' => $this->input->post('current_house'),
+						//'agent_ref'	=> $this->input->post('agent'),
 						'created_on'=> date('Y-m-d H:i:s'),
                         'status'=> 1,
                         'refrence_no'=>$refrenc_no
@@ -128,7 +132,7 @@ class Home extends CI_Controller {
     function isAadharExist($str){
         $count = $this->user_model->isAadharExist($str);//$this->auth->check_email($str, $this->admin_id);
         if ($count){
-            $this->form_validation->set_message('isMobileExist', 'Aadhar no already exist');
+            $this->form_validation->set_message('isAadharExist', 'Aadhar no already exist');
             return FALSE;
         }else{
             return TRUE;
